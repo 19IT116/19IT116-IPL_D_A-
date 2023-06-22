@@ -19,3 +19,18 @@ models:
         tests:
           - unique
           - not_null
+  
+  - name: stg_orders
+    columns:
+      - name: orderid
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: 
+                - shipped
+                - returned
+                - completed
+                - return_pending
