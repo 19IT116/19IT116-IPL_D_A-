@@ -5,12 +5,18 @@ sources:
     database: raw
     schema: jaffle_shop
     tables:
-      - name: customer
+      - name: customers
+        columns:
+          - name: id
+            tests:
+              - unique
+              - not_null
       - name: orders
         loaded_at_field: _etl_loaded_at
         freshness:
           warn_after: {count: 12, period: hour}
           error_after: {count: 24, period: hour}
+
 
 models:
   - name: stg_customer
@@ -19,7 +25,7 @@ models:
         tests:
           - unique
           - not_null
-  
+
   - name: stg_orders
     columns:
       - name: orderid
@@ -29,8 +35,9 @@ models:
       - name: status
         tests:
           - accepted_values:
-              values: 
+              values:
                 - shipped
                 - returned
                 - completed
                 - return_pending
+                - placed
