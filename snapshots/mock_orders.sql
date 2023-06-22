@@ -7,7 +7,7 @@
     config(
       target_database='DEMO_DB',
       target_schema=new_schema,
-      unique_key='order_id',
+      unique_key='id',
 
       strategy='timestamp',
       updated_at='updated_at',
