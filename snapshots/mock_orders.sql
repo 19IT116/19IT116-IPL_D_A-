@@ -13,6 +13,7 @@
     )
 }}
 
-select * from DEMO_DB.{{target.schema}}.mock_orders
+select * from {{ source('jaffle_shop', 'orders') }}
+
 
 {% endsnapshot %}
