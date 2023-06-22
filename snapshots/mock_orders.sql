@@ -1,6 +1,7 @@
 
-
 {% snapshot orders_snapshot %}
+
+{% set new_schema = target.schema + '_snapshot' %} 
 
 {{
     config(
@@ -14,6 +15,5 @@
 }}
 
 select * from {{ source('jaffle_shop', 'orders') }}
-
 
 {% endsnapshot %}
